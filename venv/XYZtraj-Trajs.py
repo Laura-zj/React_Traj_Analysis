@@ -4,6 +4,7 @@ import sys
 import os
 import glob
 import matplotlib as mpl
+import shutil
 mpl.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
