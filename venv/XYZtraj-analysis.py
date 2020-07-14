@@ -9,6 +9,13 @@ import Trajectories_txt as TX
 # main func
 def main():
     TX.Trajectories_txt('./trajTS/','').TS_plot(custom_bin_num=0,custom_range=[])
+    time_gap = []
+    for filename in glob.glob('./*.txt'):
+        TX.time_gap_statistics(filename) 
+        t = time_2 - time_1
+        time_gap.append(t)
+    average = np.mean(time_gap)
+    print('time gap is：%s fs' %(average))
 #    TX.Trajectories_txt('','./TDD_r2p/',N_col=3).Traj_plot()
 #    for filename in glob.glob('./TDD_r2p/*.txt'):
 #        TX.Trajectories_txt(filename).Classification()
