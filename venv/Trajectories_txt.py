@@ -50,6 +50,24 @@ class Trajectories_txt:
                     data = np.genfromtxt(filename, delimiter=',', autostrip=True)
                     for j in range(0, len(comb)):
                         self.lines_col[j].append(zip(data[:,comb[j][0]], data[:,comb[j][1]]))
+    def time_gap_statistics(self,filename):   
+        flag_1 = 0
+        flag_2 = 0
+        with open(filename,'r') as fr:
+            lines_list = fr.readlines()
+            for line in lines_list:
+                words = line.split(',')
+                #print(words[1])
+                if eval(words[1])<=1.60:
+                    flag_1+=1
+                    if flag_1 == 1:
+                        global time_1
+                        time_1 = eval(words[0])
+                if eval(words[2])<=1.60:
+                    flag_2+=1
+                    if flag_2 == 1:
+                        global time_2
+                        time_2 = eval(words[0])
 
     def TS_plot(self, custom_bin_num=0, custom_range=[]):
         fig = plt.figure(figsize=(3, 3))
